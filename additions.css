@@ -1,0 +1,167 @@
+.movie-info {
+  margin: 18px 0 2px;
+  padding: 12px 14px;
+  border: 1px solid #efdfdf;
+  border-radius: 9px;
+  background: #fffafa;
+}
+
+.movie-info .eyebrow { margin-bottom: 5px; }
+.movie-synopsis { margin: 0; color: #725d62; font-size: 10px; line-height: 1.55; }
+.movie-credits { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 9px; }
+.movie-credits span { color: #927b80; font-size: 8px; line-height: 1.45; }
+.movie-credits b { display: block; color: #5d444a; font-size: 8px; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 2px; }
+
+@media (max-width: 760px) {
+  .movie-credits { grid-template-columns: 1fr; gap: 7px; }
+}
+
+/* 1,000-seat auditorium and availability states */
+.show-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.show-btn { position: relative; min-height: 58px; max-width: none; }
+.show-btn em { display: block; margin-top: 6px; font: 7px var(--mono); font-style: normal; letter-spacing: .15px; }
+.show-btn.occupancy-open em { color: #4c7d6a; }
+.show-btn.occupancy-half { border-color: #f0c951; background: #fff6c9; color: #5f4902; }
+.show-btn.occupancy-half b, .show-btn.occupancy-half em { color: #806000; }
+.show-btn.occupancy-high { border-color: #d94255; background: #ffe3e6; color: #a8152e; }
+.show-btn.occupancy-high b, .show-btn.occupancy-high em { color: #b31a31; }
+.show-btn.occupancy-full { border-color: #202024; background: #202024; color: #fff; cursor: not-allowed; opacity: 1; }
+.show-btn.occupancy-full b, .show-btn.occupancy-full em { color: #c9c8cb; }
+.show-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+.show-btn.active b, .show-btn.active em { color: #ffdade; }
+
+.reservation-strip { display: grid; grid-template-columns: 1fr auto; gap: 3px 14px; align-items: center; margin: 17px 0 4px; padding: 10px 13px; border-radius: 8px; background: #2d1b21; color: #fff; }
+.reservation-strip span { color: #ffc9d0; font: 8px var(--mono); letter-spacing: .65px; }
+.reservation-strip b { color: #fff; font: 700 11px var(--mono); letter-spacing: .35px; }
+.reservation-strip small { grid-column: 1 / -1; color: #d6bbc0; font-size: 8px; }
+.seat-map-wrap { width: 100%; overflow: auto; margin: 0 -4px; padding: 8px 4px 12px; border: 1px solid #efe2e4; border-radius: 10px; background: #fffafa; }
+#seatMap.seat-map { width: max-content; min-width: 790px; max-width: none; grid-template-columns: 34px repeat(50, 11px); gap: 4px 3px; padding: 9px; }
+#seatMap .seat-map-corner, #seatMap .seat-column-heading { align-self: center; color: #8c7378; font: 7px var(--mono); text-align: center; }
+#seatMap .seat-map-corner { color: #8a3444; font-weight: 700; }
+#seatMap .row-label { align-self: center; padding: 2px 4px; border-radius: 3px; background: #f7e9eb; color: #762337; font: 700 8px var(--mono); text-align: center; }
+#seatMap .row-label.recliner-label { color: #8b5b11 !important; }
+#seatMap .seat { width: 11px; height: 11px; min-width: 11px; padding: 0; overflow: hidden; border-radius: 2px; font-size: 0; }
+#seatMap .seat.available { background: #fff; border-color: #cdbabe; }
+#seatMap .seat.available:hover { transform: scale(1.5); background: #fff4f5; }
+#seatMap .seat.selected { background: var(--red); border-color: var(--red); transform: scale(1.25); }
+#seatMap .seat.occupied { border: 0; opacity: .93; }
+#seatMap .seat.occupied.occupancy-open { background: #9eabb0; }
+#seatMap .seat.occupied.occupancy-half { background: #f0c948; }
+#seatMap .seat.occupied.occupancy-high { background: #d84155; }
+#seatMap .seat.occupied.occupancy-full { background: #1e1d20; }
+
+/* Payment step */
+.payment-panel { margin-top: 20px; border: 1px solid #ecdedf; border-radius: 11px; overflow: hidden; background: #fff; }
+.agency-payee { display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; padding: 14px; background: #fff4f5; }
+.agency-payee > span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--red); color: #fff; }
+.agency-payee small, .agency-payee strong, .agency-payee b { display: block; }
+.agency-payee small { color: #97787e; font: 8px var(--mono); letter-spacing: .65px; }
+.agency-payee strong { margin: 3px 0; font-size: 11px; }
+.agency-payee b { color: var(--red); font: 9px var(--mono); }
+.agency-payee em { color: var(--red); font: 700 20px var(--serif); font-style: normal; }
+.payment-methods { padding: 10px 13px 4px; display: grid; gap: 7px; }
+.payment-method { display: grid; grid-template-columns: 28px 1fr 16px; gap: 9px; align-items: center; min-height: 51px; padding: 9px; border: 1px solid #ebdcde; border-radius: 8px; cursor: pointer; }
+.payment-method input { position: absolute; opacity: 0; pointer-events: none; }
+.payment-method.selected { border-color: var(--red); box-shadow: 0 0 0 2px #f8dfe3; }
+.payment-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 7px; background: #fbe8eb; color: var(--red); }
+.payment-method b, .payment-method small { display: block; }
+.payment-method b { font-size: 10px; }
+.payment-method small { margin-top: 3px; color: #927b80; font-size: 8px; }
+.payment-method i { display: grid; place-items: center; width: 15px; height: 15px; border: 1px solid #ddcdd0; border-radius: 50%; color: transparent; font-size: 9px; font-style: normal; }
+.payment-method.selected i { border-color: var(--red); background: var(--red); color: #fff; }
+.delivery-option { display: flex; gap: 9px; align-items: flex-start; margin: 8px 13px; padding: 11px; border-radius: 7px; background: #f8f1e9; cursor: pointer; }
+.delivery-option input { margin: 1px 0 0; accent-color: var(--red); }
+.delivery-option b, .delivery-option small { display: block; }
+.delivery-option b { color: #5c493d; font-size: 9px; }
+.delivery-option small { margin-top: 3px; color: #927d6a; font-size: 8px; line-height: 1.4; }
+.address-field { display: block; margin: 9px 13px; color: #705c60; font-size: 9px; font-weight: 700; }
+.address-field textarea { display: block; width: 100%; resize: vertical; margin-top: 6px; padding: 8px; border: 1px solid #e5d5d7; border-radius: 6px; color: #332228; outline-color: var(--red); font-size: 10px; }
+.payment-safety { margin: 10px 13px 13px; color: #8d777b; font-size: 8px; }
+
+@media (max-width: 760px) {
+  #seatMap.seat-map { min-width: 770px; grid-template-columns: 30px repeat(50, 10px); gap: 4px 3px; }
+  #seatMap .seat { width: 10px; min-width: 10px; height: 10px; }
+  .agency-payee { grid-template-columns: 30px 1fr; }
+  .agency-payee em { grid-column: 2; }
+}
+
+/* Live poster artwork */
+.movie-art .poster-image { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .45s ease; }
+.movie-card:hover .poster-image { transform: scale(1.055); }
+.movie-art .poster-fade { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgba(19,11,15,.06) 22%, rgba(19,11,15,.1) 50%, rgba(19,11,15,.86) 100%); }
+.movie-art .poster-tag, .movie-art .movie-title-art { z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
+.movie-art .movie-symbol { display: none; }
+.hero-poster { background: #25151a !important; padding: 0 !important; transform: none !important; }
+.hero-poster > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-poster::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, transparent 38%, rgba(61,10,20,.18)); pointer-events: none; }
+.mini-poster, .summary-poster { overflow: hidden; padding: 0; background: #36131d; }
+.small-poster-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.movie-info { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: start; }
+.movie-info-poster { width: 72px; height: 103px; border-radius: 6px; overflow: hidden; background: #36131d; box-shadow: 0 5px 12px rgba(70,18,27,.18); }
+.info-poster-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.movie-info-copy { min-width: 0; }
+.movie-info-copy .movie-credits { grid-template-columns: 1fr; gap: 6px; }
+.theatre-distance small { display: block; margin-top: 4px; color: var(--red); font: 8px var(--mono); text-align: right; }
+#seatMap .seat.recliner { border-color: #b99137; background: #fff5d8; }
+#seatMap .seat.recliner.selected { background: var(--red); border-color: var(--red); }
+#seatMap .seat.recliner.occupied { box-shadow: inset 0 -2px 0 rgba(164,118,21,.55); }
+.recliner-label { color: #a17119 !important; font-weight: 700 !important; white-space: nowrap; }
+
+@media (max-width: 760px) {
+  .movie-info { grid-template-columns: 58px 1fr; }
+  .movie-info-poster { width: 58px; height: 83px; }
+  .show-buttons { grid-template-columns: 1fr 1fr; gap: 6px; }
+}
+
+/* Midnight blue theme */
+:root { --red:#1688ff; --red-deep:#075dc0; --rose:#050912; --ink:#edf6ff; --muted:#9badc2; --line:#223047; --white:#0d1522; --cream:#101b2c; --green:#55b992; }
+body, .dashboard { background:#050912; color:var(--ink); }
+.sidebar { background:#080f1a; border-right-color:#1b2a3d; }
+.sidebar .brand, .brand { color:#f4f9ff; }
+.nav-link { color:#a4b4c8; }
+.nav-link.active, .nav-link:hover { background:#0d2440; color:#42a0ff; }
+.nav-link b { background:#102d4d; color:#6bb6ff; }
+.side-help { background:#0b1b2e; color:#dbeeff; }
+.side-help small, .sign-out { color:#9badc2; }
+.main-content { background:radial-gradient(circle at 85% -5%,#102d57 0,transparent 30%),#050912; }
+.greeting h1, .section-heading h2, .movie-card h3 { color:#f4f9ff; }
+.location-chip, .bell-btn { background:#0d2139; color:#69b4ff; }
+.location-chip small { color:#8fb6df; }
+.avatar { background:#1688ff; }
+.notice-bar { background:#0c2037; border-color:#1b436e; color:#c5e2ff; }
+.notice-bar button { color:#9ccdfc; }
+.content-section .eyebrow, .pane-heading .eyebrow, .booking-movie-strip .eyebrow { color:#55a8ff; }
+.filter, .event-filter { border:1px solid #263c57; background:#0d1725; color:#b1c5dd; }
+.filter.active, .filter:hover, .event-filter.active, .event-filter:hover { border-color:#1688ff; background:#1688ff; color:#fff; }
+.movie-card p, .dashboard-cards p, .dashboard-cards small { color:#9badc2; }
+.dashboard-cards article { background:#0d1624; border-color:#203048; }
+.dash-icon.red { background:#0d2745; color:#4daaff; }
+.dash-icon.sand { background:#142238; color:#83baff; }
+.dash-icon.blue { background:#0c2746; color:#49a5ff; }
+.movie-art { box-shadow:0 10px 18px rgba(0,0,0,.38); }
+.movie-card:hover .movie-art { box-shadow:0 15px 25px rgba(17,131,255,.22); }
+.event-section { margin-top:43px; }
+.section-subtitle { margin:8px 0 0; color:#91a8c3; font-size:10px; }
+.event-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:15px; }
+.event-card { overflow:hidden; border:1px solid #1e3550; border-radius:11px; background:#0d1624; transition:transform .22s, border-color .22s, box-shadow .22s; }
+.event-card:hover { transform:translateY(-4px); border-color:#1688ff; box-shadow:0 14px 24px rgba(0,89,197,.2); }
+.event-visual { position:relative; height:124px; overflow:hidden; isolation:isolate; background:linear-gradient(145deg,#0e4076,#061328 65%); }
+.event-visual::before { content:''; position:absolute; z-index:-1; left:10%; right:10%; bottom:-50px; height:104px; border-radius:50% 50% 0 0; background:repeating-radial-gradient(ellipse at center,#1c5d96 0 4px,#102d51 5px 9px); opacity:.86; }
+.event-visual::after { content:''; position:absolute; z-index:-1; left:-10%; right:-10%; bottom:-22px; height:50px; border-radius:50% 50% 0 0; background:#1769a9; transform:perspective(100px) rotateX(56deg); }
+.mountain-cricket { background:linear-gradient(145deg,#3d6793,#0d1b31 58%,#0b4d74); }.mountain-cricket::before { background:linear-gradient(140deg,transparent 20%,#82a9ca 21% 36%,transparent 37%),linear-gradient(220deg,transparent 20%,#4d7197 21% 39%,transparent 40%); opacity:.9; border-radius:0; bottom:26px; }.football-city { background:linear-gradient(145deg,#073a6f,#06101d 60%,#0a2c50); }.football-city::after { background:#1276b6; }
+.event-region, .event-sport { position:absolute; top:10px; padding:4px 6px; border:1px solid rgba(255,255,255,.22); border-radius:4px; color:#ddecff; background:rgba(3,16,33,.45); font:8px var(--mono); letter-spacing:.45px; }.event-region{left:10px}.event-sport{right:10px}.stadium-lights{position:absolute;bottom:35px;left:18px;right:18px;display:flex;justify-content:space-between}.stadium-lights i{width:3px;height:34px;background:#94c9ff;box-shadow:0 0 11px 2px #63b4ff}.event-crowd{position:absolute;bottom:5px;left:6px;right:6px;overflow:hidden;white-space:nowrap;color:#8ccaff;font:14px/1 var(--mono);letter-spacing:4px;opacity:.72}.event-content{padding:13px}.event-date{margin:0 0 5px;color:#58aaff;font:8px var(--mono);letter-spacing:.45px}.event-content h3{margin:0 0 5px;color:#fff;font:700 15px/1.1 var(--serif)}.event-content>strong{display:block;color:#c3d9f1;font-size:9px;line-height:1.4}.event-venue{margin:11px 0;color:#75b9ff;font-size:9px;font-weight:700}.event-venue span{display:block;margin:3px 0 0 13px;color:#94a8be;font-size:8px;font-weight:500}.event-button{width:100%;padding:8px 0;border:1px solid #23517d;border-radius:6px;background:#0b2037;color:#80c2ff;font-size:9px;font-weight:800}.event-button:hover{background:#1688ff;border-color:#1688ff;color:#fff}.event-button span{font-size:14px;margin-left:6px}
+.booking-modal,.booking-main { background:#0a111d; color:#edf6ff; }.booking-progress,.booking-movie-strip,.modal-footer { border-color:#203049; }.booking-summary{background:#0d1624;border-color:#203049}.booking-movie-strip h2,.pane-heading h3,.summary-film strong,.summary-title .eyebrow{color:#edf6ff}.booking-movie-strip p:last-child,.pane-heading>p:last-child,.summary-film span{color:#91a6be}.movie-info{background:#0e1929;border-color:#233a56}.movie-synopsis{color:#bed0e4}.movie-credits b{color:#edf6ff}.movie-credits span{color:#9bb3cb}.date-btn,.theatre-item,.snack-card{background:#0d1827;border-color:#223a56;color:#e7f3ff}.date-btn span,.theatre-distance,.theatre-features{color:#91aac2}.date-btn.active{background:#1688ff;border-color:#1688ff}.show-btn.occupancy-open{background:#0b2035;border-color:#225383;color:#baddff}.show-btn.occupancy-open b,.show-btn.occupancy-open em{color:#88c7ff}.seat-map-wrap{background:#0d1725;border-color:#243d5b}.seat-legend{color:#b3c8df}.screen{border-color:#3d6185}.screen span,.row-label{color:#83a6c9}.booking-summary .summary-lines{border-color:#203049}.summary-line span,.summary-line small{color:#a3b8cf}.summary-note{background:#0d2742;color:#b8dcff}.fee-note{color:#8097ae}.payment-panel{background:#0d1827;border-color:#263f5e}.agency-payee{background:#0b2540}.agency-payee strong{color:#f2f8ff}.agency-payee small{color:#99c8f5}.payment-method{border-color:#294360}.payment-method.selected{border-color:#1688ff;box-shadow:0 0 0 2px #0b355d}.payment-icon{background:#0c2d50;color:#6db8ff}.delivery-option{background:#0b223b}.delivery-option b{color:#d9ecff}.delivery-option small,.payment-safety{color:#9ebad6}.address-field{color:#c7dbef}.address-field textarea{background:#07101c;border-color:#294360;color:#edf6ff}
+@media (max-width:1050px){.event-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.event-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.event-visual{height:105px}.event-content{padding:10px}.event-content h3{font-size:13px}.event-venue{font-size:8px}.event-venue span{margin-left:0}.event-filters{margin-top:14px}}
+
+/* All auditorium screens — four daily shows per screen */
+.theatre-schedule { padding: 15px; }
+.all-screens-heading { display:flex; justify-content:space-between; align-items:center; margin:15px 0 7px; padding:8px 10px; border-radius:6px; background:#0c1724; color:#f4c700; font:700 9px var(--sans); text-transform:uppercase; letter-spacing:.55px; }.all-screens-heading small{color:#93a9be;font-size:8px;text-transform:none;letter-spacing:0}
+.auditorium-row { display:grid; grid-template-columns:96px minmax(0,1fr); gap:10px; align-items:center; padding:10px 0; border-top:1px solid #223249; }.auditorium-label b,.auditorium-label small{display:block}.auditorium-label b{color:#e8f4ff;font:700 11px var(--serif)}.auditorium-label small{margin-top:4px;color:#8fa4ba;font-size:8px}.screen-shows{display:grid;grid-template-columns:repeat(4,minmax(104px,1fr));gap:7px}.screen-shows .show-btn{min-height:55px;padding:7px 8px}.screen-shows .show-btn span{font-size:9px}.screen-shows .show-btn b{font-size:8px}.screen-shows .show-btn em{font-size:6px;white-space:nowrap}
+
+/* Paradise crowd visual in the booking screen */
+.seat-mood{display:none}.seat-mood.paradise-crowd{position:relative;display:block;overflow:hidden;height:75px;margin:0 3px 7px;border:1px solid #714510;border-radius:9px;background:linear-gradient(180deg,#100804 0%,#2b1807 42%,#612e06 100%);box-shadow:inset 0 0 35px #000,0 6px 14px rgba(0,0,0,.28)}.paradise-title{position:absolute;z-index:3;top:8px;left:12px;color:#ffd42a;font:700 8px var(--mono);letter-spacing:1.2px;text-shadow:0 1px 8px #000}.crowd-layer{position:absolute;z-index:2;display:block;white-space:nowrap;color:#110807;letter-spacing:6px;line-height:1;text-shadow:0 -2px 0 #9e5910}.crowd-back{font-size:37px;bottom:22px;left:-7px;opacity:.94}.crowd-front{font-size:48px;bottom:-15px;left:-23px;color:#090706;text-shadow:0 -3px 0 #d28a1d}.paradise-seat-map{border-color:#8d5e13;box-shadow:0 0 0 1px rgba(255,196,0,.08),inset 0 0 22px rgba(255,160,0,.05)}.paradise-seat-map #seatMap .seat.selected{background:#f8c300;border-color:#f8c300;box-shadow:0 0 7px rgba(255,208,0,.8)}
+
+/* High-contrast black & yellow visual system */
+:root{--red:#f8c400;--red-deep:#b98a00;--rose:#070707;--ink:#f8f4e5;--muted:#b8b1a0;--line:#39352a;--white:#11110e;--cream:#1a1812;--green:#9cbf3a}
+body,.dashboard{background:#070707}.main-content{background:radial-gradient(circle at 86% -4%,#3c3108 0,transparent 29%),#070707}.sidebar{background:#0b0b09;border-right-color:#37311c}.sidebar .brand,.brand,.greeting h1,.section-heading h2,.movie-card h3{color:#fffdf2}.brand>span:last-child>span{color:#f8c400}.brand-mark{background:#f8c400;color:#0a0a08!important}.nav-link{color:#c2bcae}.nav-link.active,.nav-link:hover{background:#28220d;color:#ffd842}.nav-link b{background:#392e0a;color:#ffda39}.side-help{background:#201c0d;color:#f8efd2}.main-content .eyebrow,.content-section .eyebrow{color:#f8c400}.location-chip,.bell-btn{background:#25200d;color:#ffdc43}.location-chip small{color:#dac56b}.avatar{background:#f8c400;color:#1a1607}.notice-bar{background:#211b08;border-color:#65510c;color:#f8e89b}.notice-bar button{color:#f8d648}.filter,.event-filter{background:#17150e;border-color:#40391e;color:#d7cfb5}.filter.active,.filter:hover,.event-filter.active,.event-filter:hover{background:#f8c400;border-color:#f8c400;color:#11100b}.dashboard-cards article,.event-card{background:#11110e;border-color:#39331e}.dashboard-cards p,.dashboard-cards small,.movie-card p{color:#b6af9d}.dash-icon.red,.dash-icon.sand,.dash-icon.blue{background:#29220a;color:#f8d447}.event-card:hover{border-color:#f8c400;box-shadow:0 14px 24px rgba(248,196,0,.14)}.event-visual{background:linear-gradient(145deg,#443808,#111005 65%)}.event-visual::after{background:#9f7812}.event-region,.event-sport{color:#ffefae;background:rgba(20,17,5,.5)}.stadium-lights i{background:#ffe567;box-shadow:0 0 11px 2px #f8c400}.event-crowd{color:#f5d743}.event-date,.event-venue{color:#ffdb3e}.event-content>strong{color:#e5ddbf}.event-venue span{color:#b9b09a}.event-button{border-color:#766117;background:#201a07;color:#ffe06e}.event-button:hover{background:#f8c400;border-color:#f8c400;color:#131006}.theatre-schedule{background:#11110e;border-color:#40391e}.all-screens-heading{background:#201b08;color:#ffe163}.auditorium-row{border-color:#3b351f}.auditorium-label b{color:#fff7d1}.auditorium-label small,.all-screens-heading small{color:#b9af91}.theatre-distance small{color:#f8c400}.show-btn.occupancy-open{background:#1b180b;border-color:#5a4e18;color:#ffea87}.show-btn.occupancy-open b,.show-btn.occupancy-open em{color:#e8ca59}.show-btn.active{background:#f8c400;border-color:#f8c400;color:#141107}.show-btn.active b,.show-btn.active em{color:#4a3700}.screen-shows .show-btn.occupancy-half{background:#fff0a2;border-color:#e5b800;color:#4c3a00}.screen-shows .show-btn.occupancy-high{background:#4f1616;border-color:#da4242;color:#ffe1df}.screen-shows .show-btn.occupancy-full{background:#050505;border-color:#282828;color:#c3c3c3}.booking-modal,.booking-main{background:#0c0c0a;color:#fffdf0}.booking-summary{background:#12110d;border-color:#39341f}.booking-progress,.booking-movie-strip,.modal-footer{border-color:#37321d}.booking-movie-strip h2,.pane-heading h3,.summary-film strong,.summary-title .eyebrow{color:#fffdf2}.booking-movie-strip p:last-child,.pane-heading>p:last-child,.summary-film span{color:#b8b09e}.movie-info{background:#15130c;border-color:#41391d}.movie-synopsis{color:#ddd3b4}.movie-credits b{color:#fff3bf}.movie-credits span{color:#c1b79a}.date-btn,.theatre-item,.snack-card{background:#15130d;border-color:#40391e;color:#fff9e7}.date-btn span,.theatre-distance,.theatre-features{color:#b9af93}.date-btn.active{background:#f8c400;border-color:#f8c400;color:#161207}.date-btn.active span{color:#564100}.seat-map-wrap{background:#11100c;border-color:#44391b}.seat-legend{color:#d4caa9}.screen{border-color:#735d1f}.screen span,.row-label{color:#c1ac68}.screen-shows .show-btn{max-width:none}.summary-note{background:#241e09;color:#f4e6a4}.fee-note,.summary-line span,.summary-line small{color:#b9af91}.payment-panel{background:#15130d;border-color:#41391d}.agency-payee{background:#211c09}.agency-payee strong{color:#fff8d7}.agency-payee small{color:#e0c96e}.payment-method{border-color:#4a4120}.payment-method.selected{border-color:#f8c400;box-shadow:0 0 0 2px #473608}.payment-icon{background:#2c250a;color:#ffe16b}.delivery-option{background:#241f0d}.delivery-option b{color:#fff3c8}.delivery-option small,.payment-safety{color:#cabc8a}.address-field{color:#eadca9}.address-field textarea{background:#0a0a08;border-color:#4a411f;color:#fffbea}.login-view{background:#090907}.login-art{background:radial-gradient(circle at 88% 12%,#6a5308 0,transparent 23%),linear-gradient(145deg,#070707 0%,#201b07 55%,#765c08 140%)}.login-art .eyebrow{color:#ffe36b}.login-card{color:#fffdf0}.login-heading h2{color:#fffdf2}.login-heading>p:last-child,.demo-note{color:#c4bda9}.field-label{color:#fff4c9}.field-label input{background:#fbf7e8;color:#1c190f;border-color:#c5a42d}.field-label input::placeholder{color:#706641}.password-field button{color:#5c501f}.login-card .primary-btn,.primary-btn{background:#f8c400;color:#191406;box-shadow:0 8px 18px rgba(248,196,0,.18)}.primary-btn:hover{background:#ffe06b}.light-btn{background:#f8c400;color:#171207}
+@media(max-width:760px){.auditorium-row{grid-template-columns:1fr}.auditorium-label{display:flex;gap:8px;align-items:baseline}.auditorium-label small{margin:0}.screen-shows{overflow-x:auto;grid-template-columns:repeat(4,118px);padding-bottom:3px}.all-screens-heading{align-items:flex-start;flex-direction:column;gap:3px}.seat-mood.paradise-crowd{height:64px}}

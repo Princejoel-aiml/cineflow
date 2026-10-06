@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#a9152e" />
+  <title>CineFlow | Movie Booking Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="additions.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <section class="login-view" id="loginView" aria-labelledby="loginTitle">
+      <div class="login-art" aria-hidden="true">
+        <div class="brand brand-on-dark"><span class="brand-mark">C</span><span>Cine<span>Flow</span></span></div>
+        <div class="art-copy">
+          <p class="eyebrow">THE LOCAL CINEMA DESK</p>
+          <h1>Movie nights,<br><em>made effortless.</em></h1>
+          <p>Discover nearby screens, choose your perfect seat and keep every booking in one elegant place.</p>
+        </div>
+        <div class="film-strip"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      </div>
+      <form class="login-card google-login" id="loginForm">
+        <div class="brand login-brand"><span class="brand-mark">C</span><span>Cine<span>Flow</span></span></div>
+        <div class="login-heading">
+          <p class="eyebrow">WELCOME BACK</p>
+          <h2 id="loginTitle">Welcome to your <em>booking desk.</em></h2>
+          <p>Enter your email to start this local demo. Never enter your Google password here.</p>
+        </div>
+        <label class="field-label">Email address <input id="userId" type="email" required autocomplete="email" placeholder="you@example.com" /></label>
+        <div class="form-tools">
+          <span class="remember-me">Your email stays in this browser.</span>
+          <span class="forgot-link">Demo access</span>
+        </div>
+        <div class="login-actions">
+          <button class="primary-btn login-btn" type="submit">Continue <span>→</span></button>
+        </div>
+        <p class="demo-note">Demo sign-in only · No password is requested or stored.</p>
+      </form>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">C</span><span>Cine<span>Flow</span></span></div>
+        <nav aria-label="Main navigation">
+          <a class="nav-link active" href="#discover"><span>⌁</span> Discover</a>
+          <a class="nav-link" href="#my-tickets"><span>▱</span> My tickets <b id="ticketCount">0</b></a>
+          <a class="nav-link" href="#nearby"><span>◉</span> Nearby cinemas</a>
+          <a class="nav-link" href="#events"><span>✦</span> Live events</a>
+          <a class="nav-link" href="#profile"><span>♙</span> My profile</a>
+        </nav>
+        <div class="side-help">
+          <span class="help-icon">?</span>
+          <div><strong>Need assistance?</strong><small>Our booking desk is here.</small></div>
+        </div>
+        <button class="sign-out" id="signOut"><span>↗</span> Sign out</button>
+      </aside>
+
+      <main class="main-content" id="discover">
+        <section class="trending-bar" aria-label="Trending movies and events">
+          <div class="trending-label"><span class="trending-pulse"></span><div><b>Trending now</b><small>Movies · Matches · Events</small></div></div>
+          <div class="trending-track" id="trendingTrack" aria-label="Trending picks"></div>
+        </section>
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+          <div class="greeting"><p class="eyebrow" id="todayLabel"></p><h1>Welcome, <em id="userName">cinema lover.</em></h1></div>
+          <div class="header-actions">
+            <button class="location-chip" id="locationButton" title="Ask permission and use my location"><span>⌖</span><span><b id="locationName">Vijayawada</b><small id="locationStatus">choose city or allow location</small></span></button>
+            <button class="bell-btn" aria-label="Notifications">♧<i></i></button>
+            <div class="avatar" id="avatar">CL</div>
+          </div>
+        </header>
+
+        <div class="notice-bar"><span>✦</span><p><strong>Zero surprise charges.</strong> Your checkout shows only tickets and the snacks you choose.</p><button aria-label="Dismiss notice" id="dismissNotice">×</button></div>
+
+        <section class="hero" aria-labelledby="featuredTitle">
+          <div class="hero-copy">
+            <p class="eyebrow">NOW SHOWING IN VIJAYAWADA · FEATURED PICK</p>
+            <h2 id="featuredTitle">The <em>Paradise</em></h2>
+            <p class="hero-description">A raw action drama set against the gritty world of 1980s Secunderabad, where hope, resistance and belonging collide.</p>
+            <div class="meta-row"><span>2h 45m</span><i></i><span>Action</span><i></i><span>★ New</span></div>
+            <button class="light-btn book-featured">Book Paradise <span>→</span></button>
+          </div>
+          <div class="hero-poster" aria-label="The Paradise movie poster"><img src="https://images.filmibeat.com/ph-big/2026/02/the-paradise1770975958_0.jpeg" alt="The Paradise movie poster" /></div>
+          <div class="hero-stats"><div><b>13</b><span>sample cinema listings</span></div><div><b>04</b><span>city areas</span></div></div>
+        </section>
+
+        <section class="content-section" id="nearby">
+          <div class="section-heading"><div><p class="eyebrow">NOW PLAYING · VIJAYAWADA</p><h2>On the <em>big screen.</em></h2></div><div class="filters" id="movieFilters" role="group" aria-label="Filter movies"></div></div>
+          <div class="movie-grid" id="movieGrid"></div>
+          <p class="catalog-disclaimer">Titles and poster artwork are from the <a href="https://www.district.in/movies/vijayawada-movie-tickets" target="_blank" rel="noopener noreferrer">Vijayawada now-showing listing</a>, checked 6 October 2026. Ratings, hype scores, language/version and format choices, show allocations and seat availability are illustrative demo data, not live audience or cinema data.</p>
+          <section class="theatre-directory" aria-labelledby="theatreDirectoryTitle">
+            <div class="section-heading"><div><p class="eyebrow">VIJAYAWADA · MANGALAGIRI · GUNTUR · GANNAVARAM</p><h2 id="theatreDirectoryTitle">Nearby <em>theatres.</em></h2><p class="section-subtitle">Choose a city to browse the demo cinema directory and theatre specialties.</p></div>
+              <label class="city-picker-label">Your area
+                <select id="citySelect" aria-label="Choose a city"><option>Vijayawada</option><option>Mangalagiri</option><option>Guntur</option><option>Gannavaram</option></select>
+              </label>
+            </div>
+            <div class="theatre-directory-grid" id="nearbyTheatreGrid"></div>
+            <p class="directory-disclaimer">Theatre amenities are illustrative; screen and projector specifications are sample demo profiles, not verified equipment details. Confirm facilities and equipment with each cinema.</p>
+          </section>
+        </section>
+
+        <section class="content-section event-section" id="events">
+          <div class="section-heading"><div><p class="eyebrow">STADIUM BOOKING DESK · DEMO FIXTURES</p><h2>Feel the <em>live roar.</em></h2><p class="section-subtitle">Explore match-day stadiums and sample stand tickets around the Vijayawada–Guntur region.</p></div><div class="filters event-filters" role="group" aria-label="Filter events"><button class="event-filter active" data-region="All">All matches</button><button class="event-filter" data-region="Local">Local</button></div></div>
+          <div class="event-grid" id="eventGrid"></div>
+        </section>
+
+        <section class="content-section upcoming-section"><div class="section-heading"><div><p class="eyebrow">YOUR BOOKING DESK</p><h2>At a <em>glance.</em></h2></div><button class="text-btn" id="showTickets">View tickets <span>→</span></button></div><div class="dashboard-cards"><article><span class="dash-icon red">◉</span><div><p>Regional cinema guide</p><strong>4 city areas · sample listings</strong><small>Vijayawada, Mangalagiri, Guntur & Gannavaram</small></div></article><article><span class="dash-icon sand">◌</span><div><p>Comfort upgrade</p><strong>Recliner row shown in demo</strong><small>Seat types and facilities vary by theatre.</small></div></article><article><span class="dash-icon blue">⌁</span><div><p>Demo checkout</p><strong>No real payments are processed</strong><small>Consent is required to create a sample pass.</small></div></article></div></section>
+      </main>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close booking">×</button>
+      <div class="booking-progress"><span class="step active" data-step="1">01 <b>Show</b></span><i></i><span class="step" data-step="2">02 <b>Seats</b></span><i></i><span class="step" data-step="3">03 <b>Extras</b></span><i></i><span class="step" data-step="4">04 <b>Pay</b></span><i></i><span class="step" data-step="5">05 <b>Pass</b></span></div>
+      <div class="modal-layout">
+        <div class="booking-main">
+          <div class="booking-movie-strip"><div class="mini-poster" id="miniPoster">HHVM</div><div><p class="eyebrow">SELECTED FILM</p><h2 id="modalTitle">Hari Hara Veera Mallu</h2><p id="movieFacts">Telugu · 2h 42m · U/A</p></div></div>
+          <div class="booking-step" data-pane="1"><div class="pane-heading"><p class="eyebrow">STEP 01</p><h3>Pick a <em>theatre & show.</em></h3><p>Choose a language and presentation format, then select a matching showtime. All screening options are sample demo data.</p></div><article class="movie-info" id="movieInfo"></article><div class="date-picker" id="datePicker"></div><div class="show-option-filters"><label>LANGUAGE<select id="languageFilter" aria-label="Filter shows by language"><option value="All">All languages</option></select></label><label>FORMAT<select id="formatFilter" aria-label="Filter shows by presentation format"><option value="All">All formats</option></select></label><p id="showOptionNote">Language and format availability shown is sample demo data.</p></div><div class="theatre-list" id="theatreList"></div></div>
+          <div class="booking-step hidden" data-pane="2"><div class="pane-heading"><p class="eyebrow">STEP 02 · 1,000-SEAT AUDITORIUM</p><h3>Choose your <em>seats.</em></h3><p id="seatInstruction">Choose a row from the left column and select up to 250 seats.</p></div><div class="reservation-strip"><span>YOUR TEMPORARY BOOKING ID</span><b id="reservationId">CFLW-000000</b><small>Held while you complete payment · max 250 tickets per booking</small></div><div class="seat-legend"><span><i class="seat available"></i> Available</span><span><i class="seat selected"></i> Selected</span><span><i class="seat occupied"></i> Taken</span><span><i class="seat recliner"></i> Recliner row</span></div><div class="screen"><span>SCREEN THIS WAY</span></div><div class="seat-entry-panel"><form class="seat-quick-select" id="seatQuickSelect"><label for="seatCodeInput"><span>QUICK SELECT · ROW + SEAT</span><input id="seatCodeInput" type="text" maxlength="1500" placeholder="e.g. A01, A02, B04" autocomplete="off" aria-describedby="seatEntryStatus" /></label><button type="submit" class="secondary-btn">Select seats</button></form><p id="seatEntryStatus" role="status" aria-live="polite">Enter multiple seat references separated by commas, such as A01, A02, B04.</p></div><div class="seat-mood" id="seatMood" aria-hidden="true"></div><div class="seat-map-wrap"><div class="seat-map" id="seatMap" aria-label="1,000-seat auditorium map with row labels and seat numbers"></div></div></div>
+          <div class="booking-step hidden" data-pane="3"><div class="pane-heading"><p class="eyebrow">STEP 03</p><h3>Add a little <em>something?</em></h3><p>Snacks are optional and will be delivered to your seat.</p></div><div class="snack-grid" id="snackGrid"></div></div>
+          <div class="booking-step hidden" data-pane="4"><div class="pane-heading"><p class="eyebrow">STEP 04</p><h3>Review your <em>demo booking.</em></h3><p>This prototype does not connect to a payment provider and cannot charge you.</p></div><div class="payment-panel"><div class="agency-payee"><span>▣</span><div><small>DEMO PAYMENT RECIPIENT</small><strong id="paymentAgency">Theatre booking desk</strong><b id="paymentReference">CFLW-000000</b></div><em id="paymentTotal">₹0</em></div><div class="payment-methods" id="paymentMethods"><label class="payment-method selected"><input type="radio" name="payment" value="UPI" checked /><span class="payment-icon">◈</span><span><b>UPI (demo)</b><small>No UPI app is opened and no details are collected</small></span><i>✓</i></label><label class="payment-method"><input type="radio" name="payment" value="Card" /><span class="payment-icon">▰</span><span><b>Card (demo)</b><small>Do not enter card details in this prototype</small></span><i>✓</i></label><label class="payment-method"><input type="radio" name="payment" value="Theatre desk" /><span class="payment-icon">◉</span><span><b>Pay at theatre desk</b><small>Sample reservation only</small></span><i>✓</i></label></div><label class="delivery-option"><input type="checkbox" id="printedTicket" /> <span><b>Need a printed ticket delivered?</b><small>The theatre agency will arrange delivery after payment.</small></span></label><label class="address-field hidden" id="addressField">Delivery address <textarea id="deliveryAddress" rows="2" placeholder="House / street / locality"></textarea></label><label class="payment-consent"><input type="checkbox" id="paymentConsent" /><span><b>I agree to create this demo booking.</b><small>This confirms only a local sample pass; no money will be taken.</small></span></label><p class="payment-safety">🔒 No payment credentials are collected. Live payments require a verified payment provider.</p></div></div>
+          <div class="booking-step hidden" data-pane="5"><div class="success-pass"><span class="success-badge">✓</span><p class="eyebrow">BOOKING CONFIRMED</p><h3>Your cinema pass is <em>ready.</em></h3><p>We sent a confirmation to <b id="confirmationEmail">your email</b>. Show this QR pass at the cinema entrance.</p><div class="ticket-pass"><div class="pass-top"><div><span>CINEFLOW</span><strong id="passMovie">Hari Hara Veera Mallu</strong><small id="passTheatre">AMB Cinemas · Screen 03</small><small id="passScreeningOptions">Telugu · 2D</small></div><div class="qr-code" id="qrCode" aria-label="Virtual booking QR code"></div></div><div class="perforation"></div><div class="pass-details"><div><span>DATE & TIME</span><b id="passTime">Thu, 13 Aug · 7:30 PM</b></div><div><span>SEATS</span><b id="passSeats">E05, E06</b></div><div><span>BOOKING ID</span><b id="bookingId">CF-000000</b></div></div></div><p class="arrival-note">⚑ Please enter the theatre at least 15 minutes before the movie starts.</p></div></div>
+          <div class="modal-footer"><button class="secondary-btn" id="backButton">Back</button><button class="primary-btn" id="nextButton">Continue <span>→</span></button></div>
+        </div>
+        <aside class="booking-summary"><div class="summary-title"><p class="eyebrow">ORDER SUMMARY</p><button id="clearSelection">Clear</button></div><div class="summary-film"><div class="summary-poster" id="summaryPoster">HHVM</div><div><strong id="summaryMovie">Hari Hara Veera Mallu</strong><span id="summaryMeta">Choose a show</span></div></div><div class="summary-lines" id="summaryLines"><p class="empty-summary">Select a show to see your total.</p></div><div class="total-line"><span>Payable amount</span><strong id="totalAmount">₹0</strong></div><p class="fee-note">No tax · No booking fee · No convenience fee</p><div class="summary-note"><span>♧</span><p>Tickets are sent digitally. Need a paper ticket? The theatre agency can arrange delivery after payment.</p></div></aside>
+      </div>
+    </section>
+  </div>
+  <div class="modal-backdrop hidden" id="stadiumBackdrop">
+    <section class="stadium-modal" role="dialog" aria-modal="true" aria-labelledby="stadiumTitle">
+      <button class="modal-close" id="stadiumClose" aria-label="Close stadium booking">×</button>
+      <div class="stadium-booking-hero" id="stadiumBookingHero">
+        <p class="eyebrow">CINEFLOW · MATCH DAY</p><h2 id="stadiumTitle">Stadium booking desk</h2>
+        <p id="stadiumFixture"></p><span id="stadiumVenue"></span>
+      </div>
+      <div class="stadium-booking-body">
+        <div class="stadium-seat-heading"><div><p class="eyebrow">THE STADIUM MAP</p><h3>Select your <em>seats.</em></h3><p>Pick a stand, then tap up to 8 available seats.</p></div><div class="stadium-legend"><span><i class="stadium-seat-swatch available"></i> Available</span><span><i class="stadium-seat-swatch selected"></i> Selected</span><span><i class="stadium-seat-swatch taken"></i> Taken</span></div></div>
+        <div class="stadium-field" aria-hidden="true"><span>WEST STAND</span><strong><i>🏏</i> THE PITCH <i>🏏</i></strong><span>EAST STAND</span></div>
+        <div class="stadium-stand-tabs" id="stadiumStandTabs" role="group" aria-label="Choose stadium stand"></div>
+        <div class="stadium-seat-map-wrap"><div class="stadium-seat-map" id="stadiumSeatMap" aria-label="Stadium seating plan. Pick available numbered seats."></div></div>
+        <div class="stadium-total"><span id="stadiumSelection">Choose a stand</span><strong id="stadiumTotal">₹0</strong></div>
+        <label class="payment-consent stadium-consent"><input type="checkbox" id="stadiumConsent" /><span><b>I agree to create this demo match booking.</b><small>Sample ticket only — no live match inventory or payment is connected.</small></span></label>
+        <button class="primary-btn stadium-book-btn" id="stadiumBookButton">Confirm demo booking <span>→</span></button>
+      </div>
+    </section>
+  </div>
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
